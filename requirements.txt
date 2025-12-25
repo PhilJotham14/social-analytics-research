@@ -1,0 +1,16 @@
+pandas
+numpy
+python-dateutil
+pydantic
+pydantic-settings
+tenacity
+requests
+httpx
+praw
+PyGithub
+spacy
+nltk
+openpyxl
+pyyaml
+rapidfuzz
+loguru
