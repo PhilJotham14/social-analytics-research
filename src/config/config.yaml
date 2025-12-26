@@ -1,3 +1,17 @@
+# week_start_monday: true
+# timezone: UTC
+# storage:
+#   backend: local
+#   local_base_path: ./data
+# limits:
+#   reddit:
+#     max_posts_per_sub_per_week: 2000
+#   github:
+#     max_repos_per_week: 200
+#   twitter:
+#     mode: recent_only
+
+# added twitter max
 week_start_monday: true
 timezone: UTC
 storage:
@@ -10,3 +24,4 @@ limits:
     max_repos_per_week: 200
   twitter:
     mode: recent_only
+    max_tweets_per_week: 500  # ADD THIS LINE
