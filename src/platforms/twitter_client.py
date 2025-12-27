@@ -119,7 +119,8 @@ class TwitterClient:
         next_token = None
 
         base_params = {
-            "query": "has:hashtags -is:retweet lang:en",
+            # FIXED: Added actual search terms with operators (already done!)
+            "query": "(#AI OR #tech OR #news OR #trending OR #sports OR #business OR #entertainment) -is:retweet lang:en",
             "start_time": start.isoformat().replace("+00:00", "Z"),
             "end_time": end.isoformat().replace("+00:00", "Z"),
             "tweet.fields": "created_at,public_metrics,entities",
@@ -127,6 +128,9 @@ class TwitterClient:
         }
 
         logger.info(f"📥 Fetching Twitter tweets (max={max_tweets})")
+        logger.debug(
+            f"Query: {base_params['query']}"
+        )  # ADD THIS LINE (only change needed!)
 
         try:
             page = 1

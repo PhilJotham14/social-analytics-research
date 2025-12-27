@@ -1,6 +1,6 @@
 """Test GitHub API connection"""
 
-# how to run the file with the command - python test_github.py
+# how to run the file with the command - python tests/test_github.py
 
 import os
 from dotenv import load_dotenv
