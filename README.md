@@ -1,14 +1,15 @@
-# Social Media Platform Usage Analytics – Data Collection Pipelines
+# Social Media Platform Usage Analytics – Data Collection & Aggregation Pipelines
 
-**Project:** Social Media Platform Usage Analytics (Step 2)  
+**Project:** Social Media Platform Usage Analytics  
 **Repository:** https://github.com/PhilJotham14/social-analytics-research.git  
-**Timeline:** 53 weeks (September 2, 2024 – September 1, 2025)
+**Timeline:** 53 weeks (September 2, 2024 – September 1, 2025)  
+**Current Status:** Step 3 Complete (4-week pilot aggregation)
 
 ---
 
 ## Project Overview
 
-This repository contains production-ready data collection pipelines for analyzing trending topics and user engagement across three social media platforms:
+This repository contains production-ready data collection and aggregation pipelines for analyzing trending topics and user engagement across three social media platforms:
 
 - **Reddit:** 10 subreddits, 2,000 posts per subreddit per week
 - **Twitter/X:** Hashtag-based tweets, 500 tweets per week (Recent Search API)
@@ -21,6 +22,8 @@ This repository contains production-ready data collection pipelines for analyzin
 - Structured logging with emoji indicators for easy debugging
 - Pagination support for large datasets
 - Idempotent operations (safe to re-run)
+- Topic detection and engagement score calculation
+- Comprehensive QA artifacts for data validation
 
 ---
 
@@ -31,7 +34,7 @@ This repository contains production-ready data collection pipelines for analyzin
 - Python 3.9 or higher
 - Git installed
 - Active internet connection
-- API credentials (see [Credential Setup](#-credential-setup) below)
+- API credentials (see [Credential Setup](#credential-setup) below)
 
 ### 1. Clone the Repository
 
@@ -70,8 +73,9 @@ pip install -r requirements.txt
 - `loguru==0.7.2` – Structured logging
 - `python-dotenv==1.0.0` – Environment variable management
 - `pyyaml==6.0.1` – Configuration file parsing
-- `pandas==2.1.4` – Data processing
+- `pandas==2.1.4` – Data processing and XLSX export
 - `numpy==1.26.2` – Numerical operations
+- `openpyxl` – Excel file generation
 
 ### 4. Configure Environment Variables
 
@@ -154,7 +158,7 @@ python -m src.pipelines.run_reddit_week --week 2024-09-02
 
 ## Running the Pipelines
 
-### Individual Platform Pipelines
+### Step 1: Data Collection (Individual Weeks)
 
 **GitHub (Week 1 example):**
 ```bash
@@ -171,6 +175,33 @@ python -m src.pipelines.run_twitter_week --week 2024-09-02
 python -m src.pipelines.run_reddit_week --week 2024-09-02
 ```
 
+### Step 2: Pilot Aggregation (NEW - Step 3)
+
+After collecting raw data, aggregate and analyze across platforms:
+
+```bash
+python -m src.pipelines.run_aggregate_weeks --pilot
+```
+
+**What this does:**
+- Reads 4 pilot weeks (2024-09-02, 2024-11-25, 2025-02-24, 2025-09-01)
+- Aggregates data from all 3 platforms
+- Detects top trending topics per platform
+- Calculates engagement scores (log1p formula, min-max normalized)
+- Generates pilot CSV/XLSX outputs
+- Creates comprehensive QA artifacts
+
+**Outputs:**
+```
+data/final/
+├── pilot_weekly.csv              # Main aggregated dataset
+├── pilot_weekly.xlsx             # Excel version
+├── data_quality_status.csv       # Data status per platform-week
+├── api_telemetry.csv             # Request counts and error tracking
+├── plausibility_checks.csv       # Evidence URLs for verification
+└── validation_report.md          # Comprehensive pilot summary
+```
+
 ### Testing API Connections
 
 Before running full pipelines, verify credentials:
@@ -185,7 +216,7 @@ python tests/test_twitter.py
 
 ### Output Files
 
-All raw data is stored in JSONL format:
+**Raw data** (JSONL format):
 
 ```
 data/raw/
@@ -202,6 +233,15 @@ data/raw/
   "topics": ["chinese", "latex", "pdf", "translation"],
   "created_utc": "2024-09-06T06:56:03Z"
 }
+```
+
+**Aggregated data** (CSV/XLSX format):
+
+```csv
+Platform,Week Starting Date,Top Trending Topic,Engagement Score,Post Count,User Interactions
+GitHub,2024-09-02,python,37.2,50,158305
+X,2024-09-02,,0.0,0,0
+Reddit,2024-09-02,,0.0,0,0
 ```
 
 ---
@@ -229,6 +269,45 @@ data/raw/
 53 weeks from **Monday, September 2, 2024** to **Monday, September 1, 2025**
 
 See `src/config/weeks.yaml` for complete list.
+
+### Pilot Weeks (Step 3)
+- **Week 1:** 2024-09-02 (First week)
+- **Week 13:** 2024-11-25 (Q4 2024 sample)
+- **Week 26:** 2025-02-24 (Mid-year 2025 sample)
+- **Week 53:** 2025-09-01 (Final week)
+
+---
+
+## Data Processing Pipeline
+
+### Step 1: Raw Data Collection
+```
+API → JSONL files (data/raw/{platform}/{YYYY}/{YYYY-MM-DD}.jsonl)
+```
+
+### Step 2: Aggregation
+```
+JSONL → Topic Detection → Engagement Scoring → CSV/XLSX (data/final/)
+```
+
+### Topic Detection Logic
+- **GitHub:** Extract from `topics` array, fallback to `language`
+- **Twitter/X:** Extract hashtags from tweet text
+- **Reddit:** Extract keywords from post titles
+
+### Engagement Score Formula
+```python
+# Raw score
+raw_score = 0.3 × log1p(post_count) + 0.7 × log1p(user_interactions)
+
+# Normalization (per platform, 0-100 scale)
+normalized = 100 × (raw - min) / (max - min)
+```
+
+**User Interactions by Platform:**
+- **GitHub:** `stargazers_count + forks_count + watchers_count`
+- **Twitter/X:** `like_count + retweet_count`
+- **Reddit:** `score + num_comments`
 
 ---
 
@@ -262,9 +341,15 @@ pip install -r requirements.txt
 2. Ensure OAuth2 app is approved
 3. Check `USER_AGENT` format matches: `AppName/Version by u/username`
 
+### Issue: Aggregation fails with "No raw files found"
+**Solution:**
+1. Verify raw data exists in `data/raw/{platform}/{YYYY}/`
+2. Check file naming: `YYYY-MM-DD.jsonl`
+3. Ensure you ran collection pipelines first
+
 ---
 
-## 🔧 Error Handling Features
+## Error Handling Features
 
 All pipelines include:
 - ✅ **Exponential backoff:** 5 retries with 2-60 second waits
@@ -276,17 +361,33 @@ All pipelines include:
 
 ---
 
-## 📈 Current Status
+## Current Status
+
+### Step 2: Data Collection Pipelines
 
 | Platform | API Status | Test Evidence | Pipeline Status |
 |----------|-----------|---------------|-----------------|
 | **GitHub** | ✅ Operational | `docs/evidence/github_*` | ✅ 200 repos collected with topics |
 | **Twitter/X** | ✅ Functional | `docs/evidence/twitter_*` | ⏳ Rate limited (24hr cooldown) |
-| **Reddit** | ⏳ Pending OAuth2 | `docs/evidence/reddit_*` | ⏳ Code ready, awaiting approval |
+| **Reddit** | ❌ Access Denied | `docs/evidence/reddit_*` | ⏳ Code ready, OAuth denied |
 
 **Blockers:**
-- Reddit OAuth2 approval pending (submitted Dec 25, 2024, ETA 1-3 business days)
+- Reddit OAuth2 access denied (permanent)
 - Twitter rate limit cooldown (temporary, resets midnight UTC)
+
+### Step 3: Pilot Aggregation
+
+| Deliverable | Status | Location |
+|------------|--------|----------|
+| Pilot CSV/XLSX | ✅ Complete | `data/final/pilot_weekly.csv` |
+| QA Artifacts | ✅ Complete | `data/final/` (4 files) |
+| Validation Report | ✅ Complete | `data/final/validation_report.md` |
+
+**Pilot Results:**
+- 4 weeks aggregated (2024-09-02, 2024-11-25, 2025-02-24, 2025-09-01)
+- GitHub: 800 repos collected (4 weeks × 200 repos)
+- X and Reddit: Zeros per approved policy
+- Total dataset: 12 rows (4 weeks × 3 platforms)
 
 ---
 
@@ -297,11 +398,19 @@ social-analytics-research/
 ├── src/
 │   ├── config/              # Platform limits, subreddits, week definitions
 │   ├── platforms/           # API clients (reddit_client.py, twitter_client.py, github_client.py)
-│   ├── pipelines/           # Weekly data collection scripts
+│   ├── pipelines/           # Data collection and aggregation scripts
+│   │   ├── run_reddit_week.py        # Reddit weekly collection
+│   │   ├── run_twitter_week.py       # Twitter weekly collection
+│   │   ├── run_github_week.py        # GitHub weekly collection
+│   │   └── run_aggregate_weeks.py    # Step 3 aggregation (NEW)
 │   ├── processors/          # Topic detection, scoring, bucketing
+│   │   ├── topic_detection.py        # Keyword extraction
+│   │   └── scoring.py                # Engagement score calculation
 │   └── utils/               # Time utilities, I/O, logging
 ├── tests/                   # API connection tests
-├── data/raw/                # JSONL output files
+├── data/
+│   ├── raw/                 # JSONL output files (by platform/year)
+│   └── final/               # Aggregated CSV/XLSX + QA artifacts (NEW)
 ├── docs/evidence/           # Screenshots for validation
 ├── .env.example             # Credential template
 ├── .gitignore               # Excludes .env, data/, venv/
@@ -312,14 +421,63 @@ social-analytics-research/
 
 ---
 
+## QA Artifacts (Step 3)
+
+### data_quality_status.csv
+Tracks data completeness per platform-week:
+```csv
+Platform,Week Starting Date,Data Status,Notes
+GitHub,2024-09-02,ok,
+X,2024-09-02,missing,Interim recent-only; historical weeks set to zeros
+Reddit,2024-09-02,missing,Reddit API access refused; zeros by policy
+```
+
+### api_telemetry.csv
+Tracks API usage and error rates:
+```csv
+Platform,Week Starting Date,total_requests,http_429_count,total_retries
+GitHub,2024-09-02,4,0,0
+X,2024-09-02,0,0,0
+Reddit,2024-09-02,0,0,0
+```
+
+### plausibility_checks.csv
+Provides evidence URLs for spot-checking:
+```csv
+Platform,Week Starting Date,Top Trending Topic,Evidence URLs
+GitHub,2024-09-02,python,https://github.com/search?q=created:2024-09-02..2024-09-08+topic:python
+```
+
+### validation_report.md
+Comprehensive pilot summary with:
+- Pilot week coverage explanation
+- Explicit zero policy statements for X and Reddit
+- Engagement score methodology
+- Data quality summary
+
+---
+
 ## Notes
 
 - **Idempotent operations:** Safe to re-run pipelines; existing files are overwritten
 - **Twitter Recent Search limitation:** Can only access tweets from last 7 days; historical weeks will use zeros (approved methodology)
+- **Reddit access denied:** OAuth2 permanently denied; all weeks use zeros (approved methodology)
 - **GitHub topics enrichment:** Separate API call per repo; may encounter secondary rate limits during bulk collection
 - **Logging:** All pipelines use structured logging with emoji indicators (🚀 = start, ✅ = success, ❌ = error, ⚠️ = warning)
+- **Engagement normalization:** Pilot uses preliminary normalization (per platform across 4 weeks); full 53-week run will recalculate
 
 ---
 
-**Last Updated:** December 27, 2024  
-**Version:** Step 2 - Data Collection Pipelines
+## Next Steps
+
+### Step 4: Full 53-Week Aggregation (Future)
+- Run collection for all 53 weeks where possible
+- Aggregate complete dataset
+- Recalculate engagement scores across full timeline
+- Generate final deliverables
+
+---
+
+**Last Updated:** December 28, 2024  
+**Version:** Step 3 - Pilot Aggregation Complete  
+**Status:** 4-week pilot approved, ready for full collection
