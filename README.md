@@ -3,7 +3,7 @@
 **Project:** Social Media Platform Usage Analytics  
 **Repository:** https://github.com/PhilJotham14/social-analytics-research.git  
 **Timeline:** 53 weeks (September 2, 2024 – September 1, 2025)  
-**Current Status:** Step 3 Complete (4-week pilot aggregation)
+**Current Status:** Step 4 Complete (Full 53-week aggregation)
 
 ---
 
@@ -24,6 +24,7 @@ This repository contains production-ready data collection and aggregation pipeli
 - Idempotent operations (safe to re-run)
 - Topic detection and engagement score calculation
 - Comprehensive QA artifacts for data validation
+- Full-window engagement score normalization
 
 ---
 
@@ -158,9 +159,9 @@ python -m src.pipelines.run_reddit_week --week 2024-09-02
 
 ## Running the Pipelines
 
-### Step 1: Data Collection (Individual Weeks)
+### Step 1: Individual Week Data Collection
 
-**GitHub (Week 1 example):**
+**GitHub (Single week example):**
 ```bash
 python -m src.pipelines.run_github_week --week 2024-09-02
 ```
@@ -175,9 +176,30 @@ python -m src.pipelines.run_twitter_week --week 2024-09-02
 python -m src.pipelines.run_reddit_week --week 2024-09-02
 ```
 
-### Step 2: Pilot Aggregation (NEW - Step 3)
+---
 
-After collecting raw data, aggregate and analyze across platforms:
+### Step 2: Batch GitHub Collection (All 53 Weeks)
+
+**PowerShell (Windows):**
+```powershell
+$weeks = @('2024-09-02','2024-09-09','2024-09-16','2024-09-23','2024-09-30','2024-10-07','2024-10-14','2024-10-21','2024-10-28','2024-11-04','2024-11-11','2024-11-18','2024-11-25','2024-12-02','2024-12-09','2024-12-16','2024-12-23','2024-12-30','2025-01-06','2025-01-13','2025-01-20','2025-01-27','2025-02-03','2025-02-10','2025-02-17','2025-02-24','2025-03-03','2025-03-10','2025-03-17','2025-03-24','2025-03-31','2025-04-07','2025-04-14','2025-04-21','2025-04-28','2025-05-05','2025-05-12','2025-05-19','2025-05-26','2025-06-02','2025-06-09','2025-06-16','2025-06-23','2025-06-30','2025-07-07','2025-07-14','2025-07-21','2025-07-28','2025-08-04','2025-08-11','2025-08-18','2025-08-25','2025-09-01')
+
+foreach ($week in $weeks) { Write-Host "Collecting GitHub for $week"; python -m src.pipelines.run_github_week --week $week; Start-Sleep -Seconds 2 }
+```
+
+**Expected runtime:** ~10-15 minutes for all 53 weeks
+
+**Verify collection:**
+```powershell
+(Get-ChildItem -Path data\raw\github -Recurse -Filter *.jsonl).Count
+# Should show: 53
+```
+
+---
+
+### Step 3: Pilot Aggregation (4 weeks)
+
+After collecting sample data, run pilot aggregation:
 
 ```bash
 python -m src.pipelines.run_aggregate_weeks --pilot
@@ -194,13 +216,77 @@ python -m src.pipelines.run_aggregate_weeks --pilot
 **Outputs:**
 ```
 data/final/
-├── pilot_weekly.csv              # Main aggregated dataset
+├── pilot_weekly.csv              # Main aggregated dataset (12 rows)
 ├── pilot_weekly.xlsx             # Excel version
 ├── data_quality_status.csv       # Data status per platform-week
 ├── api_telemetry.csv             # Request counts and error tracking
 ├── plausibility_checks.csv       # Evidence URLs for verification
 └── validation_report.md          # Comprehensive pilot summary
 ```
+
+---
+
+### Step 4: Full 53-Week Aggregation (NEW)
+
+After collecting all 53 GitHub weeks, run full aggregation:
+
+```bash
+python -m src.pipelines.run_aggregate_full --full
+```
+
+**What this does:**
+- Loads all 53 weeks from `src/config/weeks.yaml`
+- Reads GitHub JSONL files from `data/raw/github/{YYYY}/{YYYY-MM-DD}.jsonl`
+- Applies zeros for X and Reddit (per approved policy)
+- Detects top trending topic per platform-week
+- Calculates user interactions per platform
+- Computes engagement scores with **full-window normalization**
+- Generates 159-row dataset (3 platforms × 53 weeks)
+- Produces CSV/XLSX outputs with complete QA artifacts
+
+**Outputs:**
+```
+data/final/
+├── social_platform_usage_weekly_2024-09-02_to_2025-09-01.csv   # 159 rows
+├── social_platform_usage_weekly_2024-09-02_to_2025-09-01.xlsx  # Excel version
+├── data_quality_status.csv                                      # 159 rows with annotations
+├── api_telemetry.csv                                            # 159 rows with request counts
+├── plausibility_checks.csv                                      # 159 rows with evidence URLs
+└── validation_report.md                                         # Comprehensive validation report
+```
+
+**Expected output:**
+```
+🚀 Step 4 Full Aggregation - Starting
+
+📅 Loaded 53 weeks from configuration
+   First week: 2024-09-02
+   Last week: 2025-09-01
+
+📊 Aggregating data for all platform-weeks...
+📈 Computing engagement scores (full-window normalization)...
+📝 Writing main outputs...
+📋 Generating QA artifacts...
+
+============================================================
+Full aggregation complete!
+============================================================
+
+Files generated:
+   - social_platform_usage_weekly_2024-09-02_to_2025-09-01.csv
+   - social_platform_usage_weekly_2024-09-02_to_2025-09-01.xlsx
+   - data_quality_status.csv
+   - api_telemetry.csv
+   - plausibility_checks.csv
+   - validation_report.md
+
+Final Check:
+   Expected rows: 159
+   Actual rows: 159
+   Status: ✅ MATCH
+```
+
+---
 
 ### Testing API Connections
 
@@ -220,9 +306,16 @@ python tests/test_twitter.py
 
 ```
 data/raw/
-├── github/2024/2024-09-02.jsonl       # 200 repos with topics
-├── x/2024/2024-09-02.jsonl            # 500 tweets with hashtags/metrics
-└── reddit/2024/2024-09-02.jsonl       # 20,000 posts (2,000/subreddit × 10)
+├── github/
+│   ├── 2024/
+│   │   ├── 2024-09-02.jsonl    # 200 repos with topics
+│   │   ├── 2024-09-09.jsonl
+│   │   └── ... (all 2024 weeks)
+│   └── 2025/
+│       ├── 2025-01-06.jsonl
+│       └── ... (all 2025 weeks)
+├── x/2024/2024-09-02.jsonl      # 500 tweets with hashtags/metrics (recent-only)
+└── reddit/2024/2024-09-02.jsonl # 20,000 posts (2,000/subreddit × 10)
 ```
 
 **Sample GitHub output:**
@@ -230,6 +323,8 @@ data/raw/
 {
   "full_name": "PDFMathTranslate/PDFMathTranslate",
   "stargazers_count": 30847,
+  "forks_count": 2782,
+  "watchers_count": 30847,
   "topics": ["chinese", "latex", "pdf", "translation"],
   "created_utc": "2024-09-06T06:56:03Z"
 }
@@ -239,7 +334,8 @@ data/raw/
 
 ```csv
 Platform,Week Starting Date,Top Trending Topic,Engagement Score,Post Count,User Interactions
-GitHub,2024-09-02,python,37.2,50,158305
+GitHub,2024-09-02,python,38.63,49,158903
+GitHub,2024-09-09,python,37.61,57,146705
 X,2024-09-02,,0.0,0,0
 Reddit,2024-09-02,,0.0,0,0
 ```
@@ -347,6 +443,16 @@ pip install -r requirements.txt
 2. Check file naming: `YYYY-MM-DD.jsonl`
 3. Ensure you ran collection pipelines first
 
+### Issue: PowerShell batch collection command doesn't work
+**Solution:** Use the two-step method:
+```powershell
+# Step 1: Create weeks array
+$weeks = @('2024-09-02','2024-09-09',...,'2025-09-01')
+
+# Step 2: Run collection loop
+foreach ($week in $weeks) { Write-Host "Collecting GitHub for $week"; python -m src.pipelines.run_github_week --week $week; Start-Sleep -Seconds 2 }
+```
+
 ---
 
 ## Error Handling Features
@@ -367,13 +473,16 @@ All pipelines include:
 
 | Platform | API Status | Test Evidence | Pipeline Status |
 |----------|-----------|---------------|-----------------|
-| **GitHub** | ✅ Operational | `docs/evidence/github_*` | ✅ 200 repos collected with topics |
-| **Twitter/X** | ✅ Functional | `docs/evidence/twitter_*` | ⏳ Rate limited (24hr cooldown) |
-| **Reddit** | ❌ Access Denied | `docs/evidence/reddit_*` | ⏳ Code ready, OAuth denied |
+| **GitHub** | ✅ Operational | `docs/evidence/github_*` | ✅ All 53 weeks collected |
+| **Twitter/X** | ✅ Functional | `docs/evidence/twitter_*` | ⏳ Rate limited (recent-only) |
+| **Reddit** | ❌ Access Denied | `docs/evidence/reddit_*` | ❌ OAuth permanently denied |
 
-**Blockers:**
-- Reddit OAuth2 access denied (permanent)
-- Twitter rate limit cooldown (temporary, resets midnight UTC)
+**Status:**
+- GitHub: 53/53 weeks collected (10,600 total repos)
+- Twitter/X: Recent-only API (historical weeks use zeros per policy)
+- Reddit: OAuth denied (all weeks use zeros per policy)
+
+---
 
 ### Step 3: Pilot Aggregation
 
@@ -391,26 +500,50 @@ All pipelines include:
 
 ---
 
+### Step 4: Full 53-Week Aggregation
+
+| Deliverable | Status | Location |
+|------------|--------|----------|
+| Full CSV (159 rows) | ✅ Complete | `data/final/social_platform_usage_weekly_2024-09-02_to_2025-09-01.csv` |
+| Full XLSX | ✅ Complete | `data/final/social_platform_usage_weekly_2024-09-02_to_2025-09-01.xlsx` |
+| QA Artifacts | ✅ Complete | `data/final/` (4 files with 159 rows each) |
+| Validation Report | ✅ Complete | `data/final/validation_report.md` |
+
+**Final Results:**
+- 159 rows generated (3 platforms × 53 weeks)
+- GitHub: 53/53 weeks populated with real data
+  - Total repos analyzed: 10,600 (calculated from 53 weeks × 200 repos/week)
+  - Top trending topic: **Python** (dominant across all weeks)
+  - Engagement scores: Full-window normalized (0-100 scale)
+- X: 53/53 weeks zeros per recent-only API policy
+- Reddit: 53/53 weeks zeros per OAuth denial policy
+- All QA artifacts complete (no placeholders)
+
+---
+
 ## Repository Structure
 
 ```
 social-analytics-research/
 ├── src/
 │   ├── config/              # Platform limits, subreddits, week definitions
+│   │   └── weeks.yaml       # All 53 Monday dates
 │   ├── platforms/           # API clients (reddit_client.py, twitter_client.py, github_client.py)
 │   ├── pipelines/           # Data collection and aggregation scripts
-│   │   ├── run_reddit_week.py        # Reddit weekly collection
-│   │   ├── run_twitter_week.py       # Twitter weekly collection
-│   │   ├── run_github_week.py        # GitHub weekly collection
-│   │   └── run_aggregate_weeks.py    # Step 3 aggregation (NEW)
+│   │   ├── run_reddit_week.py         # Reddit weekly collection
+│   │   ├── run_twitter_week.py        # Twitter weekly collection
+│   │   ├── run_github_week.py         # GitHub weekly collection
+│   │   ├── run_aggregate_weeks.py     # Step 3 pilot aggregation
+│   │   └── run_aggregate_full.py      # Step 4 full aggregation (NEW)
 │   ├── processors/          # Topic detection, scoring, bucketing
-│   │   ├── topic_detection.py        # Keyword extraction
-│   │   └── scoring.py                # Engagement score calculation
+│   │   ├── topic_detection.py         # Keyword extraction
+│   │   └── scoring.py                 # Engagement score calculation
 │   └── utils/               # Time utilities, I/O, logging
 ├── tests/                   # API connection tests
 ├── data/
 │   ├── raw/                 # JSONL output files (by platform/year)
-│   └── final/               # Aggregated CSV/XLSX + QA artifacts (NEW)
+│   │   └── github/          # 53 weeks of GitHub data collected
+│   └── final/               # Aggregated CSV/XLSX + QA artifacts
 ├── docs/evidence/           # Screenshots for validation
 ├── .env.example             # Credential template
 ├── .gitignore               # Excludes .env, data/, venv/
@@ -421,19 +554,24 @@ social-analytics-research/
 
 ---
 
-## QA Artifacts (Step 3)
+## QA Artifacts
 
-### data_quality_status.csv
-Tracks data completeness per platform-week:
-```csv
-Platform,Week Starting Date,Data Status,Notes
-GitHub,2024-09-02,ok,
-X,2024-09-02,missing,Interim recent-only; historical weeks set to zeros
-Reddit,2024-09-02,missing,Reddit API access refused; zeros by policy
-```
+### Step 3: Pilot (12 rows)
+- `pilot_weekly.csv` - 4 weeks × 3 platforms
+- `data_quality_status.csv` - Status per platform-week
+- `api_telemetry.csv` - Request counts
+- `plausibility_checks.csv` - Evidence URLs
+- `validation_report.md` - Pilot summary
 
-### api_telemetry.csv
-Tracks API usage and error rates:
+### Step 4: Full Dataset (159 rows)
+- `social_platform_usage_weekly_2024-09-02_to_2025-09-01.csv` - Complete dataset
+- `social_platform_usage_weekly_2024-09-02_to_2025-09-01.xlsx` - Excel version
+- `data_quality_status.csv` - 159 rows with status annotations
+- `api_telemetry.csv` - 159 rows with request counts (GitHub=4, X/Reddit=0)
+- `plausibility_checks.csv` - 159 rows with GitHub evidence URLs
+- `validation_report.md` - Comprehensive validation with 53/53 GitHub weeks
+
+**Sample QA artifact (api_telemetry.csv):**
 ```csv
 Platform,Week Starting Date,total_requests,http_429_count,total_retries
 GitHub,2024-09-02,4,0,0
@@ -441,43 +579,50 @@ X,2024-09-02,0,0,0
 Reddit,2024-09-02,0,0,0
 ```
 
-### plausibility_checks.csv
-Provides evidence URLs for spot-checking:
+**Sample QA artifact (plausibility_checks.csv):**
 ```csv
-Platform,Week Starting Date,Top Trending Topic,Evidence URLs
-GitHub,2024-09-02,python,https://github.com/search?q=created:2024-09-02..2024-09-08+topic:python
+Platform,Week Starting Date,Top Trending Topic,Reason,Evidence URLs,Verdict,Confidence,Notes
+GitHub,2024-09-02,python,Topic frequency validation,https://github.com/search?q=created:2024-09-02..2024-09-08+topic:python&type=repositories,Pass,High,49 repos with python topic
+X,2024-09-02,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+Reddit,2024-09-02,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
 ```
-
-### validation_report.md
-Comprehensive pilot summary with:
-- Pilot week coverage explanation
-- Explicit zero policy statements for X and Reddit
-- Engagement score methodology
-- Data quality summary
 
 ---
 
 ## Notes
 
 - **Idempotent operations:** Safe to re-run pipelines; existing files are overwritten
-- **Twitter Recent Search limitation:** Can only access tweets from last 7 days; historical weeks will use zeros (approved methodology)
+- **Twitter Recent Search limitation:** Can only access tweets from last 7 days; historical weeks use zeros (approved methodology)
 - **Reddit access denied:** OAuth2 permanently denied; all weeks use zeros (approved methodology)
 - **GitHub topics enrichment:** Separate API call per repo; may encounter secondary rate limits during bulk collection
 - **Logging:** All pipelines use structured logging with emoji indicators (🚀 = start, ✅ = success, ❌ = error, ⚠️ = warning)
-- **Engagement normalization:** Pilot uses preliminary normalization (per platform across 4 weeks); full 53-week run will recalculate
+- **Engagement normalization:** 
+  - Pilot (Step 3): Preliminary normalization across 4 weeks
+  - Full (Step 4): Final normalization across complete 53-week window
+- **Data quality:** All GitHub weeks collected successfully with real repository data and topics
 
 ---
 
-## Next Steps
+## Project Completion Summary
 
-### Step 4: Full 53-Week Aggregation (Future)
-- Run collection for all 53 weeks where possible
-- Aggregate complete dataset
-- Recalculate engagement scores across full timeline
-- Generate final deliverables
+### Completed Steps
+
+**Step 1:** Project setup and API credential configuration  
+**Step 2:** Data collection pipelines for all 3 platforms  
+**Step 3:** Pilot aggregation (4 weeks, 12 rows)  
+**Step 4:** Full 53-week aggregation (159 rows)
+
+### Final Deliverables
+
+- 159-row complete dataset (CSV + XLSX)
+- 4 comprehensive QA artifacts (159 rows each)
+- Validation report with GitHub 53/53 weeks populated
+- 10,600 GitHub repositories analyzed
+- Python identified as dominant trending topic
+- Full-window engagement score normalization applied
 
 ---
 
-**Last Updated:** January 07, 2026  
-**Version:** Step 4 - Complete full 53-week aggregation with real GitHub data and comprehensive QA artifacts
-**Status:**(step4): Complete full 53-week aggregation with real GitHub data and comprehensive QA artifacts
+**Last Updated:** January 5, 2026  
+**Version:** Step 4 - Full 53-Week Aggregation Complete  
+**Status:** All deliverables complete and ready for submission
