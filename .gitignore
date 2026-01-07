@@ -29,9 +29,9 @@ ENV/
 *.ipynb
 
 # Data directories (can be large)
-data/raw/
-data/intermediate/
-data/final/
+# data/raw/
+# data/intermediate/
+# data/final/
 *.parquet
 *.jsonl
 

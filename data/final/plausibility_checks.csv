@@ -1,0 +1,160 @@
+Platform,Week Starting Date,Top Trending Topic,Reason,Evidence URLs,Verdict,Confidence,Notes
+GitHub,2024-09-02,python,Topic frequency validation,https://github.com/search?q=created:2024-09-02..2024-09-08+topic:python&type=repositories,Pass,High,49 repos with python topic
+GitHub,2024-09-09,python,Topic frequency validation,https://github.com/search?q=created:2024-09-09..2024-09-15+topic:python&type=repositories,Pass,High,57 repos with python topic
+GitHub,2024-09-16,typescript,Topic frequency validation,https://github.com/search?q=created:2024-09-16..2024-09-22+topic:typescript&type=repositories,Pass,High,35 repos with typescript topic
+GitHub,2024-09-23,python,Topic frequency validation,https://github.com/search?q=created:2024-09-23..2024-09-29+topic:python&type=repositories,Pass,High,60 repos with python topic
+GitHub,2024-09-30,python,Topic frequency validation,https://github.com/search?q=created:2024-09-30..2024-10-06+topic:python&type=repositories,Pass,High,59 repos with python topic
+GitHub,2024-10-07,typescript,Topic frequency validation,https://github.com/search?q=created:2024-10-07..2024-10-13+topic:typescript&type=repositories,Pass,High,24 repos with typescript topic
+GitHub,2024-10-14,python,Topic frequency validation,https://github.com/search?q=created:2024-10-14..2024-10-20+topic:python&type=repositories,Pass,High,60 repos with python topic
+GitHub,2024-10-21,python,Topic frequency validation,https://github.com/search?q=created:2024-10-21..2024-10-27+topic:python&type=repositories,Pass,High,75 repos with python topic
+GitHub,2024-10-28,typescript,Topic frequency validation,https://github.com/search?q=created:2024-10-28..2024-11-03+topic:typescript&type=repositories,Pass,High,32 repos with typescript topic
+GitHub,2024-11-04,python,Topic frequency validation,https://github.com/search?q=created:2024-11-04..2024-11-10+topic:python&type=repositories,Pass,High,65 repos with python topic
+GitHub,2024-11-11,python,Topic frequency validation,https://github.com/search?q=created:2024-11-11..2024-11-17+topic:python&type=repositories,Pass,High,67 repos with python topic
+GitHub,2024-11-18,typescript,Topic frequency validation,https://github.com/search?q=created:2024-11-18..2024-11-24+topic:typescript&type=repositories,Pass,High,35 repos with typescript topic
+GitHub,2024-11-25,python,Topic frequency validation,https://github.com/search?q=created:2024-11-25..2024-12-01+topic:python&type=repositories,Pass,High,74 repos with python topic
+GitHub,2024-12-02,python,Topic frequency validation,https://github.com/search?q=created:2024-12-02..2024-12-08+topic:python&type=repositories,Pass,High,71 repos with python topic
+GitHub,2024-12-09,typescript,Topic frequency validation,https://github.com/search?q=created:2024-12-09..2024-12-15+topic:typescript&type=repositories,Pass,High,36 repos with typescript topic
+GitHub,2024-12-16,python,Topic frequency validation,https://github.com/search?q=created:2024-12-16..2024-12-22+topic:python&type=repositories,Pass,High,63 repos with python topic
+GitHub,2024-12-23,python,Topic frequency validation,https://github.com/search?q=created:2024-12-23..2024-12-29+topic:python&type=repositories,Pass,High,58 repos with python topic
+GitHub,2024-12-30,typescript,Topic frequency validation,https://github.com/search?q=created:2024-12-30..2025-01-05+topic:typescript&type=repositories,Pass,High,38 repos with typescript topic
+GitHub,2025-01-06,python,Topic frequency validation,https://github.com/search?q=created:2025-01-06..2025-01-12+topic:python&type=repositories,Pass,High,54 repos with python topic
+GitHub,2025-01-13,python,Topic frequency validation,https://github.com/search?q=created:2025-01-13..2025-01-19+topic:python&type=repositories,Pass,High,63 repos with python topic
+GitHub,2025-01-20,typescript,Topic frequency validation,https://github.com/search?q=created:2025-01-20..2025-01-26+topic:typescript&type=repositories,Pass,High,32 repos with typescript topic
+GitHub,2025-01-27,python,Topic frequency validation,https://github.com/search?q=created:2025-01-27..2025-02-02+topic:python&type=repositories,Pass,High,78 repos with python topic
+GitHub,2025-02-03,python,Topic frequency validation,https://github.com/search?q=created:2025-02-03..2025-02-09+topic:python&type=repositories,Pass,High,82 repos with python topic
+GitHub,2025-02-10,typescript,Topic frequency validation,https://github.com/search?q=created:2025-02-10..2025-02-16+topic:typescript&type=repositories,Pass,High,41 repos with typescript topic
+GitHub,2025-02-17,python,Topic frequency validation,https://github.com/search?q=created:2025-02-17..2025-02-23+topic:python&type=repositories,Pass,High,68 repos with python topic
+GitHub,2025-02-24,python,Topic frequency validation,https://github.com/search?q=created:2025-02-24..2025-03-02+topic:python&type=repositories,Pass,High,79 repos with python topic
+GitHub,2025-03-03,typescript,Topic frequency validation,https://github.com/search?q=created:2025-03-03..2025-03-09+topic:typescript&type=repositories,Pass,High,30 repos with typescript topic
+GitHub,2025-03-10,python,Topic frequency validation,https://github.com/search?q=created:2025-03-10..2025-03-16+topic:python&type=repositories,Pass,High,72 repos with python topic
+GitHub,2025-03-17,python,Topic frequency validation,https://github.com/search?q=created:2025-03-17..2025-03-23+topic:python&type=repositories,Pass,High,81 repos with python topic
+GitHub,2025-03-24,typescript,Topic frequency validation,https://github.com/search?q=created:2025-03-24..2025-03-30+topic:typescript&type=repositories,Pass,High,32 repos with typescript topic
+GitHub,2025-03-31,python,Topic frequency validation,https://github.com/search?q=created:2025-03-31..2025-04-06+topic:python&type=repositories,Pass,High,75 repos with python topic
+GitHub,2025-04-07,python,Topic frequency validation,https://github.com/search?q=created:2025-04-07..2025-04-13+topic:python&type=repositories,Pass,High,74 repos with python topic
+GitHub,2025-04-14,typescript,Topic frequency validation,https://github.com/search?q=created:2025-04-14..2025-04-20+topic:typescript&type=repositories,Pass,High,41 repos with typescript topic
+GitHub,2025-04-21,python,Topic frequency validation,https://github.com/search?q=created:2025-04-21..2025-04-27+topic:python&type=repositories,Pass,High,68 repos with python topic
+GitHub,2025-04-28,python,Topic frequency validation,https://github.com/search?q=created:2025-04-28..2025-05-04+topic:python&type=repositories,Pass,High,69 repos with python topic
+GitHub,2025-05-05,typescript,Topic frequency validation,https://github.com/search?q=created:2025-05-05..2025-05-11+topic:typescript&type=repositories,Pass,High,37 repos with typescript topic
+GitHub,2025-05-12,python,Topic frequency validation,https://github.com/search?q=created:2025-05-12..2025-05-18+topic:python&type=repositories,Pass,High,65 repos with python topic
+GitHub,2025-05-19,python,Topic frequency validation,https://github.com/search?q=created:2025-05-19..2025-05-25+topic:python&type=repositories,Pass,High,73 repos with python topic
+GitHub,2025-05-26,typescript,Topic frequency validation,https://github.com/search?q=created:2025-05-26..2025-06-01+topic:typescript&type=repositories,Pass,High,28 repos with typescript topic
+GitHub,2025-06-02,python,Topic frequency validation,https://github.com/search?q=created:2025-06-02..2025-06-08+topic:python&type=repositories,Pass,High,51 repos with python topic
+GitHub,2025-06-09,python,Topic frequency validation,https://github.com/search?q=created:2025-06-09..2025-06-15+topic:python&type=repositories,Pass,High,69 repos with python topic
+GitHub,2025-06-16,typescript,Topic frequency validation,https://github.com/search?q=created:2025-06-16..2025-06-22+topic:typescript&type=repositories,Pass,High,37 repos with typescript topic
+GitHub,2025-06-23,python,Topic frequency validation,https://github.com/search?q=created:2025-06-23..2025-06-29+topic:python&type=repositories,Pass,High,67 repos with python topic
+GitHub,2025-06-30,python,Topic frequency validation,https://github.com/search?q=created:2025-06-30..2025-07-06+topic:python&type=repositories,Pass,High,54 repos with python topic
+GitHub,2025-07-07,typescript,Topic frequency validation,https://github.com/search?q=created:2025-07-07..2025-07-13+topic:typescript&type=repositories,Pass,High,41 repos with typescript topic
+GitHub,2025-07-14,python,Topic frequency validation,https://github.com/search?q=created:2025-07-14..2025-07-20+topic:python&type=repositories,Pass,High,57 repos with python topic
+GitHub,2025-07-21,python,Topic frequency validation,https://github.com/search?q=created:2025-07-21..2025-07-27+topic:python&type=repositories,Pass,High,50 repos with python topic
+GitHub,2025-07-28,typescript,Topic frequency validation,https://github.com/search?q=created:2025-07-28..2025-08-03+topic:typescript&type=repositories,Pass,High,32 repos with typescript topic
+GitHub,2025-08-04,python,Topic frequency validation,https://github.com/search?q=created:2025-08-04..2025-08-10+topic:python&type=repositories,Pass,High,63 repos with python topic
+GitHub,2025-08-11,python,Topic frequency validation,https://github.com/search?q=created:2025-08-11..2025-08-17+topic:python&type=repositories,Pass,High,64 repos with python topic
+GitHub,2025-08-18,typescript,Topic frequency validation,https://github.com/search?q=created:2025-08-18..2025-08-24+topic:typescript&type=repositories,Pass,High,34 repos with typescript topic
+GitHub,2025-08-25,python,Topic frequency validation,https://github.com/search?q=created:2025-08-25..2025-08-31+topic:python&type=repositories,Pass,High,50 repos with python topic
+GitHub,2025-09-01,python,Topic frequency validation,https://github.com/search?q=created:2025-09-01..2025-09-07+topic:python&type=repositories,Pass,High,59 repos with python topic
+Reddit,2024-09-02,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-09-09,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-09-16,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-09-23,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-09-30,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-10-07,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-10-14,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-10-21,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-10-28,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-11-04,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-11-11,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-11-18,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-11-25,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-12-02,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-12-09,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-12-16,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-12-23,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2024-12-30,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-01-06,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-01-13,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-01-20,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-01-27,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-02-03,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-02-10,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-02-17,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-02-24,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-03-03,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-03-10,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-03-17,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-03-24,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-03-31,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-04-07,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-04-14,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-04-21,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-04-28,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-05-05,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-05-12,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-05-19,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-05-26,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-06-02,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-06-09,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-06-16,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-06-23,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-06-30,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-07-07,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-07-14,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-07-21,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-07-28,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-08-04,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-08-11,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-08-18,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-08-25,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+Reddit,2025-09-01,,OAuth access denied,Per Reddit policy decision,N/A,N/A,Access denied: zeros per policy
+X,2024-09-02,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-09-09,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-09-16,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-09-23,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-09-30,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-10-07,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-10-14,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-10-21,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-10-28,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-11-04,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-11-11,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-11-18,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-11-25,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-12-02,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-12-09,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-12-16,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-12-23,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2024-12-30,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-01-06,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-01-13,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-01-20,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-01-27,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-02-03,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-02-10,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-02-17,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-02-24,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-03-03,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-03-10,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-03-17,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-03-24,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-03-31,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-04-07,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-04-14,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-04-21,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-04-28,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-05-05,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-05-12,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-05-19,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-05-26,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-06-02,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-06-09,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-06-16,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-06-23,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-06-30,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-07-07,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-07-14,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-07-21,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-07-28,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-08-04,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-08-11,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-08-18,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-08-25,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
+X,2025-09-01,,Recent-only API limitation,https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent,N/A,N/A,Historical week: zeros per policy
