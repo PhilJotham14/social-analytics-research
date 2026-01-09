@@ -52,6 +52,10 @@ GitHub,2025-08-11,ok,
 GitHub,2025-08-18,ok,
 GitHub,2025-08-25,ok,
 GitHub,2025-09-01,ok,
+GitHub,2025-09-08,ok,
+GitHub,2025-09-15,ok,
+GitHub,2025-09-22,ok,
+GitHub,2025-09-29,ok,
 Reddit,2024-09-02,missing,OAuth denied: all weeks zeros per Step 1 policy
 Reddit,2024-09-09,missing,OAuth denied: all weeks zeros per Step 1 policy
 Reddit,2024-09-16,missing,OAuth denied: all weeks zeros per Step 1 policy
@@ -105,6 +109,10 @@ Reddit,2025-08-11,missing,OAuth denied: all weeks zeros per Step 1 policy
 Reddit,2025-08-18,missing,OAuth denied: all weeks zeros per Step 1 policy
 Reddit,2025-08-25,missing,OAuth denied: all weeks zeros per Step 1 policy
 Reddit,2025-09-01,missing,OAuth denied: all weeks zeros per Step 1 policy
+Reddit,2025-09-08,missing,OAuth denied: all weeks zeros per Step 1 policy
+Reddit,2025-09-15,missing,OAuth denied: all weeks zeros per Step 1 policy
+Reddit,2025-09-22,missing,OAuth denied: all weeks zeros per Step 1 policy
+Reddit,2025-09-29,missing,OAuth denied: all weeks zeros per Step 1 policy
 X,2024-09-02,missing,Recent-only API: historical weeks zeros per Step 1 policy
 X,2024-09-09,missing,Recent-only API: historical weeks zeros per Step 1 policy
 X,2024-09-16,missing,Recent-only API: historical weeks zeros per Step 1 policy
@@ -158,3 +166,7 @@ X,2025-08-11,missing,Recent-only API: historical weeks zeros per Step 1 policy
 X,2025-08-18,missing,Recent-only API: historical weeks zeros per Step 1 policy
 X,2025-08-25,missing,Recent-only API: historical weeks zeros per Step 1 policy
 X,2025-09-01,missing,Recent-only API: historical weeks zeros per Step 1 policy
+X,2025-09-08,missing,Recent-only API: historical weeks zeros per Step 1 policy
+X,2025-09-15,missing,Recent-only API: historical weeks zeros per Step 1 policy
+X,2025-09-22,missing,Recent-only API: historical weeks zeros per Step 1 policy
+X,2025-09-29,missing,Recent-only API: historical weeks zeros per Step 1 policy
